@@ -704,8 +704,8 @@ subroutine energyandforces_bazant(nat, alat0, rxyz0, etot, fxyz, deralat, stress
 
   !print*, "F:  ", alat
   stress=-matmul(deralat,transpose(alat))/vol
-
-
+  !stress = -matmul(transpose(deralat), transpose(alat))/vol
+  !stress = deralat
 
   !stress = stress / Ha_eV *Bohr_Ang**3
   !        strten(1) = stress(1,1)
