@@ -48,8 +48,8 @@ bazant_module = Extension(name = 'bazant',
                           extra_f77_compile_args = COMPILER_FLAGS,
                           extra_compile_args = COMPILER_FLAGS ,
                           extra_link_args = LINKER_FLAGS + MATH_LINKER_FLAGS,
-                          language = FORTRAN,
-                          f2py_options=['--quiet'])
+                          language = FORTRAN)#,
+                          #f2py_options=['--quiet'])
 
 
 
@@ -80,7 +80,7 @@ def setup_pepytools():
 
         # set up package contents
 
-        ext_package = 'bazant',
+        ext_package = 'asebazant',
         ext_modules = [
             bazant_module
         ],
