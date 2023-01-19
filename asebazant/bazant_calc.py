@@ -1,6 +1,6 @@
 import numpy as np
 from ase.calculators.calculator import Calculator, all_changes
-import bazant
+from .bazant import energyandforces_bazant
 
 class BazantCalculator(Calculator):
 
@@ -30,7 +30,7 @@ class BazantCalculator(Calculator):
         positions = self.atoms.positions
         cell = self.atoms.cell
 
-        energy, forces, deralat, stress = bazant.energyandforces_bazant(cell, positions.T, natoms)
+        energy, forces, deralat, stress = energyandforces_bazant(cell, positions.T, natoms)
 
         # no lattice, no stress
         if self.atoms.cell.rank == 3:

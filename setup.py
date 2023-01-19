@@ -22,18 +22,18 @@ COMPILER_FLAGS = ["-O3", "-fopenmp", "-m64", "-march=native", "-fPIC",
 LINKER_FLAGS = ["-lgomp"]
 MATH_LINKER_FLAGS = ["-lblas", "-llapack"]
 
-# UNCOMMENT TO FORCE LINKING TO MKL with GNU compilers:
+# # UNCOMMENT TO FORCE LINKING TO MKL with GNU compilers:
 if mkl_exists(verbose=True):
     LINKER_FLAGS = ["-lgomp", " -lpthread", "-lm", "-ldl"]
     MATH_LINKER_FLAGS = ["-L${MKLROOT}/lib/intel64", "-lmkl_rt"]
 
-# For clang without OpenMP: (i.e. most Apple/mac system)
+# # For clang without OpenMP: (i.e. most Apple/mac system)
 if sys.platform == "darwin" and all(["gnu" not in arg for arg in sys.argv]):
     COMPILER_FLAGS = ["-O3", "-m64", "-march=native", "-fPIC"]
     LINKER_FLAGS = []
     MATH_LINKER_FLAGS = ["-lblas", "-llapack"]
 
-# Intel
+# # Intel
 if any(["intelem" in arg for arg in sys.argv]):
     COMPILER_FLAGS = ["-xHost", "-O3", "-axAVX", "-qopenmp"]
     LINKER_FLAGS = ["-liomp5", " -lpthread", "-lm", "-ldl"]
@@ -42,14 +42,14 @@ if any(["intelem" in arg for arg in sys.argv]):
 
 bazant_module = Extension(name = 'bazant',
                           sources = [
-                                'bazant/bazant_lib.f90',
+                                'asebazant/bazant_lib.f90',
                             ],
                           extra_f90_compile_args = COMPILER_FLAGS,
                           extra_f77_compile_args = COMPILER_FLAGS,
                           extra_compile_args = COMPILER_FLAGS ,
                           extra_link_args = LINKER_FLAGS + MATH_LINKER_FLAGS,
-                          language = FORTRAN)#,
-                          #f2py_options=['--quiet'])
+                          language = FORTRAN,
+                          f2py_options=['--quiet'])
 
 
 
@@ -64,8 +64,8 @@ def setup_pepytools():
 
     setup(
 
-        name="bazant",
-        packages=['bazant'],
+        name="asebazant",
+        packages=['asebazant'],
 
         # metadata
         version=__version__,
