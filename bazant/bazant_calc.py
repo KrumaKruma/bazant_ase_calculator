@@ -30,8 +30,7 @@ class BazantCalculator(Calculator):
         positions = self.atoms.positions
         cell = self.atoms.cell
 
-        energy, forces, deralat, stress_intern = bazant.energyandforces_bazant(cell.T, positions.T, natoms)
-        stress = - np.matmul(deralat,cell) / np.linalg.det(cell)
+        energy, forces, deralat, stress = bazant.energyandforces_bazant(cell, positions.T, natoms)
 
         # no lattice, no stress
         if self.atoms.cell.rank == 3:
