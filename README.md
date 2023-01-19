@@ -2,7 +2,7 @@
 This package contains the bazant silicon force field written in fortran and is interfaced to python to use it within the atomic simulation environment package.
 
 ## Installation
-The package can either be installed directly via pip by execuding
+The package can either be installed directly via pip by execuding. Please consider that the python setup script need numpy to be preinstalled for proper installation.
 ```
 pip install 'git+https://github.com/KrumaKruma/bazant_ase_calculator.git'
 ```
