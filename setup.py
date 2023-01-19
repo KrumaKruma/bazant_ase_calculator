@@ -84,6 +84,11 @@ def setup_pepytools():
         ext_modules = [
             bazant_module
         ],
+
+        install_requires=[
+            'numpy',
+            'ase'
+        ]
 )
 
 if __name__ == '__main__':
