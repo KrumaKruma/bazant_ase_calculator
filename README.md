@@ -8,7 +8,7 @@ pip install 'git+https://github.com/KrumaKruma/bazant_ase_calculator.git'
 ```
 or it can be install from source:
 ```
-git clone git+https://github.com/KrumaKruma/bazant_ase_calculator.git
+git clone https://github.com/KrumaKruma/bazant_ase_calculator.git
 cd bazant_ase_calculator
 pip install .
 ```
