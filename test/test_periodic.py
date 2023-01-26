@@ -3,7 +3,7 @@ from ase.io import read, write
 from asebazant.bazant_calc import BazantCalculator
 
 def main():
-    atoms = read('../data/Si_in.extxyz')
+    atoms = read('../data/Si_periodic.extxyz')
     calc = BazantCalculator()
     atoms.calc = calc
     print("Stress:  \n", atoms.get_stress())
@@ -11,7 +11,7 @@ def main():
     print("Energy:  \n", atoms.get_potential_energy())
 
 
-    write("Si_out.ascii", atoms)
+    write("Si_periodic_out.ascii", atoms)
 
 
 if __name__ == '__main__':

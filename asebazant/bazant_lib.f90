@@ -220,8 +220,11 @@ subroutine energyandforces_bazant(nat, alat0, rxyz0, etot, fxyz, deralat, stress
     rxyz(2, iat) = rxyz0(2, iat)*Bohr_Ang
     rxyz(3, iat) = rxyz0(3, iat)*Bohr_Ang
   end do
-  call back2cell(nat, rxyz, alat)
-  call nnlist(nat, nnbrx, alat, cutoff, rxyz, lsta, lstb, rel)
+
+  if ((alat(1,1) * alat(2,2) * alat(3,3)) .gt. 1.d-12) then
+    call back2cell(nat, rxyz, alat)
+  endif
+    call nnlist(nat, nnbrx, alat, cutoff, rxyz, lsta, lstb, rel)
   call invertalat(alat, alatinv)
 
   !Allocation of temporary arrays
